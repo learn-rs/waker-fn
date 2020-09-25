@@ -1,8 +1,9 @@
 #![no_std]
+extern crate alloc;
 
-use std::sync::Arc;
-use std::mem::{self, ManuallyDrop};
-use std::task::{RawWaker, RawWakerVTable, Waker};
+use alloc::sync::Arc;
+use core::mem::{self, ManuallyDrop};
+use core::task::{RawWaker, RawWakerVTable, Waker};
 
 
 pub fn waker_fn<F: Fn() + Send + Sync + 'static>(f: F) -> Waker {
